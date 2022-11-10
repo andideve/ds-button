@@ -44,7 +44,7 @@ function state<P = any>(config: StatesConfig<P>) {
   return (props: P) => createStates<P>(config, props);
 }
 
-export const styles: (CSSObject | FunctionInterpolation<ButtonProps>)[] = [
+export const baseStyles: (CSSObject | FunctionInterpolation<ButtonProps>)[] = [
   {
     '&[href]': {
       textDecoration: 'none',
@@ -62,38 +62,6 @@ export const styles: (CSSObject | FunctionInterpolation<ButtonProps>)[] = [
       cursor: 'default',
     },
   },
-  size({
-    xs: {
-      padding: '0 0.75rem',
-      height: '2.125rem',
-      fontSize: 'var(--ds-fontSizes-xs)',
-      lineHeight: 'var(--ds-lineHeights-normal)',
-    },
-    sm: {
-      padding: '0 0.75rem',
-      height: '2.25rem',
-      fontSize: 'var(--ds-fontSizes-sm)',
-      lineHeight: 'var(--ds-lineHeights-5)',
-    },
-    base: {
-      padding: '0 1.25rem',
-      height: '2.5rem',
-      fontSize: 'var(--ds-fontSizes-sm)',
-      lineHeight: 'var(--ds-lineHeights-5)',
-    },
-    lg: {
-      padding: '0 1.25rem',
-      height: '3rem',
-      fontSize: 'var(--ds-fontSizes-base)',
-      lineHeight: 'var(--ds-lineHeights-6)',
-    },
-    xl: {
-      padding: '0 1.5rem',
-      height: '3.25rem',
-      fontSize: 'var(--ds-fontSizes-base)',
-      lineHeight: 'var(--ds-lineHeights-6)',
-    },
-  }),
   variant({
     filled: {
       color: 'var(--ds-colors-white)',
@@ -130,14 +98,50 @@ export const styles: (CSSObject | FunctionInterpolation<ButtonProps>)[] = [
   },
   state({
     disabled: { opacity: 0.24 },
-    hover: { '&:before': { opacity: 0.15 } },
-    active: { '&:before': { opacity: 0.15 } },
-    'lg:active': { '&:before': { opacity: 0.075 } },
+    hover: { '&:before': { opacity: 0.05 } },
+    active: { '&:before': { opacity: 0.05 } },
+    'lg:active': { '&:before': { opacity: 0 } },
   }),
   system<SystemProps>({
     rounded: {
       property: 'borderRadius',
       scale: ThemeKey.radii,
+    },
+  }),
+];
+
+const styles: (CSSObject | FunctionInterpolation<ButtonProps>)[] = [
+  ...baseStyles,
+  size({
+    xs: {
+      padding: '0 0.75rem',
+      height: '2.125rem',
+      fontSize: 'var(--ds-fontSizes-xs)',
+      lineHeight: 'var(--ds-lineHeights-normal)',
+    },
+    sm: {
+      padding: '0 0.75rem',
+      height: '2.25rem',
+      fontSize: 'var(--ds-fontSizes-sm)',
+      lineHeight: 'var(--ds-lineHeights-5)',
+    },
+    base: {
+      padding: '0 1.25rem',
+      height: '2.5rem',
+      fontSize: 'var(--ds-fontSizes-sm)',
+      lineHeight: 'var(--ds-lineHeights-5)',
+    },
+    lg: {
+      padding: '0 1.25rem',
+      height: '3rem',
+      fontSize: 'var(--ds-fontSizes-base)',
+      lineHeight: 'var(--ds-lineHeights-6)',
+    },
+    xl: {
+      padding: '0 1.5rem',
+      height: '3.25rem',
+      fontSize: 'var(--ds-fontSizes-base)',
+      lineHeight: 'var(--ds-lineHeights-6)',
     },
   }),
 ];

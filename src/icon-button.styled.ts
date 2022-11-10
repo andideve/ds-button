@@ -1,6 +1,6 @@
 import styled, { CSSObject, FunctionInterpolation } from '@emotion/styled';
 
-import { size, styles as baseStyles } from './button.styled';
+import { size, baseStyles } from './button.styled';
 import { IconButtonProps } from './button.types';
 
 const styles: (CSSObject | FunctionInterpolation<IconButtonProps>)[] = [
